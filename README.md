@@ -1,6 +1,6 @@
 # GitHub OAuth Authentication Routes
 
-These endpoints allow you to authenticate users via GitHub OAuth and retrieve their GitHub profile information.
+These endpoints allow us to authenticate users via GitHub OAuth and retrieve their GitHub profile information.
 
 ## Endpoints
 
@@ -93,7 +93,7 @@ Success Response (201):
 {
   "message": "User created successfully",
   "user": {
-    // Same structure as GET response
+    "Same structure as GET response"
   }
 }
 ```
@@ -112,7 +112,7 @@ Request Body:
 {
   "name": "Updated Name",
   "email": "updated@example.com"
-  // Other updatable fields except username
+  "Other updatable fields except username"
 }
 ```
 Success Response (200):
@@ -120,7 +120,92 @@ Success Response (200):
 {
   "message": "User updated successfully",
   "user": {
-    // Updated user data
+    
   }
 }
+```
+
+### 6. Get User Session Status
+`**GET /users/:username/session**`
+
+**Purpose:**
+Checks if a user's session is still active or has expired.
+
+Path Parameters:
+`username` (required): The username of the user to check session for.
+
+Success Response (200):
+```json
+{
+  "expired": false,
+  "sessionDuration": 5,
+  "sessionLimit": 10,
+  "sessionStart": "2023-01-01T00:00:00.000Z"
+}
+```
+
+### 7. Update User Session
+`**PUT /users/:username/session**`
+
+**Purpose:**
+Refreshes/updates a user's session timestamp and update with new accesstoken
+
+**Path Parameters:**
+username (required): The username of the user to update session for.
+
+Success Response (200):
+```json
+{
+  "message": "Session updated successfully",
+  "sessionStart": "2023-01-01T00:00:00.000Z"
+}
+```
+
+### 8. Add Project
+`**POST /projects/add**`
+
+**Purpose:**
+Adds a new project/repository for a user to the database.
+
+Request Body:
+```json
+{
+  "user": "username",
+  "repolink": "https://github.com/username/repository-name"
+}
+```
+Success Response (200):
+```json
+{
+  "message": "Project added successfully to projects",
+  "data": [
+    {
+      "id": 1,
+      "user": "username",
+      "repourl": "https://github.com/username/repository-name",
+      "created_date": "2023-01-01T00:00:00.000Z"
+    }
+  ]
+}
+```
+### 9. Fetch User Projects
+`**GET /projects/fetch**`
+
+**Purpose:**
+Retrieves all projects/repositories for a specific user from a specified table.
+
+**Query Parameters:**
+`user` (required): The username to fetch projects for.
+`table` (required): The database table name to query (e.g., "projects").
+
+Success Response (200):
+```json
+[
+  {
+    "id": 1,
+    "user": "username",
+    "repourl": "https://github.com/username/repository-1",
+    "created_date": "2023-01-01T00:00:00.000Z"
+  },
+]
 ```
