@@ -2,11 +2,7 @@
 
 These endpoints allow you to authenticate users via GitHub OAuth and retrieve their GitHub profile information.
 
----
-
 ## Endpoints
-
----
 
 ### 1. Exchange GitHub Authorization Code for Access Token
 
@@ -25,6 +21,7 @@ Exchanges a GitHub authorization code for an access token.
   "token_type": "bearer",
   "scope": "user:email"
 }
+```
 
 ### 2. Get User Data
 **GET /auth/github/user**
