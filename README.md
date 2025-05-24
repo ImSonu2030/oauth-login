@@ -14,7 +14,7 @@ Exchanges a GitHub authorization code for an access token.
 **Query Parameters:**
 - `code` (required): The authorization code received from GitHub's OAuth redirect.
 
-**Success Response (200):**
+Success Response (200):
 ```json
 {
   "access_token": "gho_xxxxxxxxxxxxxxxxxxxx",
@@ -33,7 +33,7 @@ Retrieves the authenticated user's GitHub profile information.
 `Authorization` (required): Bearer token from the previous endpoint.
 Format: `Bearer your_access_token_here`
 
-**Success Response (200):**
+Success Response (200):
 ```json
 {
   "id": 12345678,
@@ -43,4 +43,84 @@ Format: `Bearer your_access_token_here`
   "avatar_url": "https://avatars.githubusercontent.com/u/12345678",
   "html_url": "https://github.com/username"
 }
+```
 
+### 3. Get User by Username
+`**GET /users/username/:username**`
+**Purpose:**
+Retrieves a user's information from the database.
+
+**Path Parameters:**
+username (required): The username of the user to retrieve.
+
+Success Response (200):
+```
+{
+  "user": {
+    "github_id": 12345678,
+    "username": "testuser",
+    "name": "Test User",
+    "email": "test@example.com",
+    "avatar_url": "https://example.com/avatar.jpg",
+    "html_url": "https://github.com/testuser",
+    "access_token": "gho_xxxxxxxxxxxxxxxxxxxx",
+    "modified_date": "2023-01-01T00:00:00.000Z",
+    "created_date": "2023-01-01T00:00:00.000Z"
+  }
+}
+```
+
+### 4. Create User
+`**POST /users/createUser**`
+
+**Purpose:**
+Creates a new user in the database.
+
+Request Body:
+```json
+{
+  "username": "newuser",
+  "name": "New User",
+  "email": "new@example.com",
+  "avatar_url": "https://example.com/newavatar.jpg",
+  "html_url": "https://github.com/newuser",
+  "access_token": "gho_yyyyyyyyyyyyyyyyyyyy"
+}
+```
+
+Success Response (201):
+```json
+{
+  "message": "User created successfully",
+  "user": {
+    // Same structure as GET response
+  }
+}
+```
+
+### 5. Update User
+`**PUT /users/username/:username**`
+
+**Purpose:**
+Updates an existing user's information.
+
+**Path Parameters:**
+`username` (required): The username of the user to update.
+
+Request Body:
+```json
+{
+  "name": "Updated Name",
+  "email": "updated@example.com"
+  // Other updatable fields except username
+}
+```
+Success Response (200):
+```json
+{
+  "message": "User updated successfully",
+  "user": {
+    // Updated user data
+  }
+}
+```
