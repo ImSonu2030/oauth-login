@@ -3,7 +3,7 @@ import cors from "cors";
 
 import authRoutes from "./router/authRoutes";
 import userRoutes from "./router/userRoutes";
-// import projectRoutes from "./routes/projectRoutes.js";
+import projectRoutes from "./router/projectRoutes.js";
 import errorHandler from "./helper/errorHandler";
 
 const PORT = 8003;
@@ -14,7 +14,7 @@ app.use(json());
 
 app.use("/auth", authRoutes);
 app.use("/users", userRoutes);
-// app.use("/projects", projectRoutes);
+app.use("/projects", projectRoutes);
 app.use(errorHandler);
 
 app.listen(PORT, () => {

@@ -9,7 +9,7 @@ These endpoints allow you to authenticate users via GitHub OAuth and retrieve th
 **GET /auth/github/token**  
 
 **Purpose:**  
-Exchanges a GitHub authorization code for an access token.
+Exchanges a GitHub authorization code for an access token which can be used to validate all request.
 
 **Query Parameters:**
 - `code` (required): The authorization code received from GitHub's OAuth redirect.
