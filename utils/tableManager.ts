@@ -1,4 +1,4 @@
-import client from "../config/db.js";
+import client from "../config/db";
 
 async function doesEntryExist(
   tablename: string, 

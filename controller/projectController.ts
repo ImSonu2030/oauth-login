@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
-import client from '../config/db.js';
-import { doesEntryExist } from '../utils/tableManager.js';
+import client from '../config/db';
+import { doesEntryExist } from '../utils/tableManager';
 import { 
     AddProjectRequest, 
     FetchProjectsQuery, 

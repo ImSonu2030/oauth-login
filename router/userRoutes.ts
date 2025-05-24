@@ -10,7 +10,7 @@ import {
 const router: Router = Router();
 
 router.get("/:username", getUser);
-router.post("/:createUser", createUser);
+router.post("/", createUser);
 router.put("/:username", updateUser);
 
 router.get("/:username/session", getUserSession);

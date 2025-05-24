@@ -3,7 +3,7 @@ import cors from "cors";
 
 import authRoutes from "./router/authRoutes";
 import userRoutes from "./router/userRoutes";
-import projectRoutes from "./router/projectRoutes.js";
+import projectRoutes from "./router/projectRoutes";
 import errorHandler from "./helper/errorHandler";
 
 const PORT = 8003;
